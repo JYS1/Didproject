@@ -10,8 +10,8 @@ module.exports = function(app)
         res.render('signUp.html');
     });
 
-    app.get('/sss',(req, res) => {
-        res.render('sss.html');
+    app.get('/IPFS',(req, res) => {
+        res.render('IPFS.html');
     });
 
     app.post('/login', (req,res) => {
