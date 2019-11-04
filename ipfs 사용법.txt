@@ -1,13 +1,11 @@
--ÀÛ¼ºÀÚ co7744-
+1. go-ipfsì„ ì›¹ì—ì„œ ì¸ìŠ¤í†¨
+2. go-langë„ ë‹¤ìš´ì„ ë°›ëŠ”ë‹¤
+3. go-ipfs.exe ë¥¼ go/bin ì•ˆì— ë„£ê³ 
+4. cmd ì°½ì— ë“¤ì–´ê°€ì„œ ipfs initì„ í•´ì„œ peer í•´ì‹œê°’ì„ ë°›ëŠ”ë‹¤
+5. ë°‘ì— ìˆëŠ” ëª…ë ¹ì–´ë¥¼ ì³ì¤€ë‹¤ ì´ê²Œ ì•„ë§ˆ ëˆ„êµ¬ë“ ì§€ ipfs ì„œë²„ì— ì ‘ê·¼ì„ ê°€ëŠ¥í•˜ê²Œ ë§Œë“œëŠ” ì½”ë“œ 
 
-1. go-ipfsÀ» À¥¿¡¼­ ÀÎ½ºÅç
-2. go-langµµ ´Ù¿îÀ» ¹Ş´Â´Ù
-3. go-ipfs.exe ¸¦ go/bin ¾È¿¡ ³Ö°í
-4. cmd Ã¢¿¡ µé¾î°¡¼­ ipfs initÀ» ÇØ¼­ peer ÇØ½Ã°ªÀ» ¹Ş´Â´Ù
-5. ¹Ø¿¡ ÀÖ´Â ¸í·É¾î¸¦ ÃÄÁØ´Ù ÀÌ°Ô ¾Æ¸¶ ´©±¸µçÁö ipfs ¼­¹ö¿¡ Á¢±ÙÀ» °¡´ÉÇÏ°Ô ¸¸µå´Â ÄÚµå 
-
-	ipfs config -- json API.HTTPHeaders.Access-Control-Allow-Methods "[\¡°PUT\¡±, \¡°GET\¡±, \¡°POST\¡±, \¡°OPTIONS\¡±]"
+	ipfs config -- json API.HTTPHeaders.Access-Control-Allow-Methods "[\â€œPUT\â€, \â€œGET\â€, \â€œPOST\â€, \â€œOPTIONS\â€]"
 	ipfs config --json API.HTTPHeaders.Access-Control-Allow-Origin "[\"*\"]"
 	ipfs config --json API.HTTPHeaders.Access-Control-Allow-Credentials "[\"true\"]"
 
-6. ipfs daemonÀ» ½ÇÇàÇØ¼­ ¼­¹ö¸¦ ¿­¾îµĞ´Ù.
+6. ipfs daemonì„ ì‹¤í–‰í•´ì„œ ì„œë²„ë¥¼ ì—´ì–´ë‘”ë‹¤.
