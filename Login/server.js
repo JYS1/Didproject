@@ -13,6 +13,6 @@ app.use(bodyParser.json());
 var router = require("./router/main")(app); //순서 위치 중요
 var api = require("./router/user")(app);
 
-var server = app.listen(3000, function(){
-    console.log("Express server started PORT:3000");
+var server = app.listen(80, function(){
+    console.log("Express server started PORT:80");
 })
