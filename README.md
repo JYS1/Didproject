@@ -4,8 +4,7 @@
 
 목표: IPFS와 ethereum 네트워크를 활용하여 탈중앙화 신분증명 방식을 만들어보자
 
-**해당 프로젝트는 localhost에서만 구축을 진행하였습니다.
-**또한 동작이 되기 위해서는 nodeJS, mysql, geth, go-ipfs가 설치되어야합니다!!
+**해당 프로젝트는 localhost에서만 구축을 진행하였습니다, 또한 동작이 되기 위해서는 nodeJS, mysql, geth, go-ipfs가 설치되어야합니다!!
 
 1. nodeJS를 활용한 서버 구축
 2. BootStrap를 이용하 UI/UX 디자인
