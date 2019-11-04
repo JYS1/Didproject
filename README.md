@@ -1,4 +1,4 @@
-﻿# Didproject
+﻿# Didproject - by DImoD
 
 -Team DImoD의 DID 프로젝트-
 
