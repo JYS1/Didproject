@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Colorlib Templates">
+    <meta name="author" content="Colorlib">
+    <meta name="keywords" content="Colorlib Templates">
+
+    <!-- Title Page-->
+    <title>SignUP!!</title>
+
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+
+    <!-- Main CSS-->
+    <link href="../public/css/signUp.css" rel="stylesheet" media="all">
+    <script src = "http://code.jquery.com/jquery-1.4.4.min.js"></script>
+
+    <script>
+    const test = () => {
+        $.ajax({
+            type : 'POST',
+            url : '/user/test',
+            data : {
+                "id" : $('#signUpID').val()
+            },
+            success : function(result) {
+                alert('하이루');
+            },
+            error: function(error) {
+                alert('실패');
+            }
+        })	//	End Ajax Request
+    }
+
+    const signUp = () => {
+        //예외처리
+        if($('#signUpPassword1').val() != $('#signUpPassword2').val()) {
+            alert('비밀번호가 다릅니다.');
+            return false;
+        }
+        $.ajax({
+            type : 'POST',
+            url : '/user/register',
+            data: {
+                "id" : $('#signUpID').val(),
+                "password" : $('#signUpPassword1').val(),
+                "meta": $('#eth_adddress').val()
+            },
+            success : function(result) {
+                alert(`${result}`);
+
+
+            },
+            error: function(result) {
+                alert('실패');
+            }
+        })
+        location.href='/';
+    }
+
+
+
+
+    </script>
+</head>
+
+<body>
+    <div class="page-wrapper bg-blue p-t-100 p-b-50">
+        <div class="wrapper wrapper--w900">
+            <div class="card card-6">
+                <div class="card-heading">
+                    <h2 class="title">SignUp</h2>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        <div class="form-row">
+                            <div class="name">ID</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-6" type="text" name="text" placeholder="ex) gildong123" id="signUpID">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <label class="password">password</label>
+                            <div class="value">
+                                <input class="input--style-6" type="password" id="signUpPassword1">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="password">confirm password</div>
+                            <div class="value">
+                                <input class="input--style-6" type="password" id="signUpPassword2">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="name">Ethereum Address</div>
+                            <div class="value">
+                                <input class="input--style-6" type="text" id="eth_adddress">
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn--radius-2 btn--blue-2" type="submit" onclick="signUp()">SignUp</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Jquery JS-->
+    <script src="../public/vendor/jquery/jquery.min.js"></script>
+
+
+    <!-- Main JS-->
+    <script src="../public/javascripts/global.js"></script>
+
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+
+</html>
+<!-- end document-->
