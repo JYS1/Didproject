@@ -1,0 +1,13 @@
+-작성자 co7744-
+
+1. go-ipfs을 웹에서 인스톨
+2. go-lang도 다운을 받는다
+3. go-ipfs.exe 를 go/bin 안에 넣고
+4. cmd 창에 들어가서 ipfs init을 해서 peer 해시값을 받는다
+5. 밑에 있는 명령어를 쳐준다 이게 아마 누구든지 ipfs 서버에 접근을 가능하게 만드는 코드 
+
+	ipfs config -- json API.HTTPHeaders.Access-Control-Allow-Methods "[\“PUT\”, \“GET\”, \“POST\”, \“OPTIONS\”]"
+	ipfs config --json API.HTTPHeaders.Access-Control-Allow-Origin "[\"*\"]"
+	ipfs config --json API.HTTPHeaders.Access-Control-Allow-Credentials "[\"true\"]"
+
+6. ipfs daemon을 실행해서 서버를 열어둔다.
