@@ -4,7 +4,7 @@
 4. cmd 창에 들어가서 ipfs init을 해서 peer 해시값을 받는다
 5. 밑에 있는 명령어를 쳐준다 이게 아마 누구든지 ipfs 서버에 접근을 가능하게 만드는 코드 
 
-	ipfs config -- json API.HTTPHeaders.Access-Control-Allow-Methods "[\“PUT\”, \“GET\”, \“POST\”, \“OPTIONS\”]"
+	ipfs config --json API.HTTPHeaders.Access-Control-Allow-Methods "[\“PUT\”, \“GET\”, \“POST\”, \“OPTIONS\”]"
 	ipfs config --json API.HTTPHeaders.Access-Control-Allow-Origin "[\"*\"]"
 	ipfs config --json API.HTTPHeaders.Access-Control-Allow-Credentials "[\"true\"]"
 
