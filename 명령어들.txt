@@ -14,7 +14,7 @@ CREATE TABLE user (
 	password INT NOT NULL,
 	meta VARCHAR(50) NOT NULL UNIQUE
 );
-으로 생성후 동작 안되시면 밑에 있는거로 동작 
+으로 생성후 동작 하지만 mysql권한에러가 뜰 가능성이 높으니 밑에 명령어 생성
 
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '1234';		// my-sql client 권한 승인
 FLUSH PRIVILEGES;		//권한 업로드
