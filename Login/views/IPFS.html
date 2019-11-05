@@ -19,16 +19,19 @@
             console.error(err)
             return
           }
-          let url = `https://ipfs.io/ipfs/${result[0].hash}`
-          console.log(`Url --> ${url}`)
-          document.getElementById("url").innerHTML= url
-          document.getElementById("url").href= url
-          document.getElementById("output").src = url
+          //let url = `https://ipfs.io/ipfs/${result[0].hash}`
+          let hash = `${result[0].hash}`
+          //console.log(`Url --> ${url}`)
+          document.getElementById("hash").value = hash
+          //document.getElementById("url").innerHTML= url
+          //document.getElementById("url").href= url
+          //document.getElementById("output").src = url
         })
       }
       const photo = document.getElementById("photo");
       reader.readAsArrayBuffer(photo.files[0]); // Read Provided File
     }
+  
   </script>
   <body>
     <form action="/">
@@ -40,7 +43,13 @@
     </form>
     </br>
     </br>
-    <a id="url"></a>
+
+    <form method="POST" action="/user/test">
+      <input id="hash" name="hash" type="hidden">
+      <input id="private_key" name="private_key" type ="text" placeholder="받으신 개인키 입력!">
+      <button type="submit">블록체인 등록</button>
+    </form>
+   
     </br>
     </br>
     <img id="output">
