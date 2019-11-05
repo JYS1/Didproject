@@ -1,9 +1,14 @@
 var db = require("../db/db_conn");
 
 module.exports = function(app){
+    
     app.post('/user/test', async (req, res) =>{
+        
+        hash = req.body.hash;
 
-        res.send(`ㅇㅇㄴ`);
+        console.log(hash);
+
+       
     });
 
 
@@ -18,19 +23,6 @@ module.exports = function(app){
 
         let sql_meta = `select meta from user;`
         let sql = `insert into user(id, password, meta) values('${id}','${password}','${meta}');`
-
-        // db.query(sql_meta, function(err, rows, fields){
-        //     if(err){
-        //         console.log(err);
-        //         res.end();
-        //     }else{
-        //         if(rows[0].meta==meta){
-        //             console.log(err);
-        //             res.send('already exist')
-        //         }
-        //     }
-        // });
-
 
         db.query(sql, function(err, rows, fields){
             if(err){
