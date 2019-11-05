@@ -144,6 +144,7 @@ iframe {
   font-family: Poppins-Regular;
   font-size: 13px;
   line-height: 1.5;
+  padding-left: 254px;
   color: #666666;
 }
 
@@ -191,6 +192,9 @@ iframe {
   justify-content: space-between;
   padding: 50px 113px 33px 112px;
 }
+.text-center{
+    padding-top: 70px;
+}
 
 /*------------------------------------------------------------------
 [  ]*/
@@ -228,6 +232,7 @@ iframe {
 .wrap-input100 {
   position: relative;
   width: 100%;
+  height:60px;
   z-index: 1;
   margin-bottom: 10px;
 }
@@ -296,7 +301,8 @@ iframe {
   left: 0;
   width: 100%;
   height: 100%;
-  padding-left: 35px;
+  padding-left: 31px;
+  padding-bottom: 6px;
   pointer-events: none;
   color: #666666;
 
