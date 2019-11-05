@@ -12,7 +12,7 @@ use DImoD;
 CREATE TABLE user (
 	id VARCHAR(15) PRIMARY KEY,
 	password INT NOT NULL,
-	meta VARCHAT(50) NOT NULL UNIQUE
+	meta VARCHAR(50) NOT NULL UNIQUE
 );
 으로 생성후 동작 안되시면 밑에 있는거로 동작 
 
