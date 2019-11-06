@@ -86,8 +86,10 @@ module.exports = function(app){
     })
 
     app.post('/user/contract', async (req, res)=>{
-        let hash = "'"+req.body.hash+"'";
-        let key = "'"+req.body.private_key+"'";
+        let hash = req.body.hash;
+        let key = req.body.private_key;
+        key="'"+key+"'";
+        hash="'"+hash+"'";
         //let sql = `select meta from user;`
 
         console.log(hash);
@@ -113,7 +115,8 @@ module.exports = function(app){
     })
 
     app.post('/user/validate', async (req, res)=>{
-        let key = "'"+req.body.key+"'";
+        let key = req.body.key;
+        
         console.log(key);
 
         let hash = await myContract.methods.sendHash(key).call();
