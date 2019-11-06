@@ -1,0 +1,35 @@
+스마트컨트렉트 - 코드로 구성 누구나 참조 및 사용 가능 그 코드가 즉 솔리디티 이더리움의 주로  쓰는 언어가 솔리디티 				시타 뮤타 = 하이퍼레저
+컨트렉트 버전을 먼저 작성 pragma solidity ^0.4.19
+contract HelloWorld{	//계약서 작성 선언
+
+	여기안에 컨트렉트
+
+}//이미 컨트렉트 작성 완료
+
+스토리지 즉 데이터를 저장할수있기 때문에 비용소모를 덜할려면 구조체를 써야할 경우 발생 압축을 잘 시킬수록 이더 비용 감소...
+
+함수에 ****view****를 쓸때 가스를 안쓴다 <- 비용지불이 없이 호출가능 pure 블록체인에 접근을 안하고 비용지불 없다
+
+event는 영수증 즉 증명기록 및 수정 ***불가*** <-비용 무조건 발생 (pure view 무시)
+언제 쓰냐 일반적으로 토큰 영수증 
+컨트렉트에서 연산은 비용때문에 쓰면 안됨
+unit indexed (3개까지 필터링) 가능 <- 영수증 query 할때 편안 (조금 느리다)  
+
+Mapping key로 value를 찾는 방식
+다중 Mapping 가능  (mapping (address=>mapping(address=>uint)  public accountBalance;
+msg 안에 누가 누구 얼마 
+싸인 자체는 내가 해야하기 때문에 외부 불가능
+뷰자체의 위험성이 존재 용도에 따라
+keccak256 이더용 해쉬
+if 와 require의 차이는 require는 실행불가
+suicide 종료시켜버리기~
+now는 현재 시간이다 
+
+port 충돌시 -- (rpc 접속시 밑밑)
+geth init genesis.json --datadir ./data
+geth --rpc --rpcapi net,web3,eth,miner,admin,personal --datadir ./ --networkid 777 --nodiscover 
+geth --rpc --rpcapi net,web3,eth,miner,admin,personal --datadir ./ --networkid 777 --nodiscover --port 30302 --rpcport 7545
+geth attach http://localhost:8545 or 7545 port 충돌시 빵빵
+우리는 geth 클라이언트 딴으로 들어간거임 이 네트워크를 client 딴으로 들어간거고 metamask 로 사용해도 문제없다.
+
+remix는 우리가 스마트 컨트렉트 만들수있다.
