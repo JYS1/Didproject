@@ -35,7 +35,62 @@
             }
         })	//	End Ajax Request
     }
-
+    const idCheck = () => {
+        $.ajax({
+            type : 'GET',
+            url : '/user/idCheck',
+            data: {
+                "id" : $('#signUpID').val(),
+            },
+            success : function(result) {
+                if(result == 0){
+                    $('#result').attr("style", "text-align: center; color: green");
+                    $('#result').text("ID : You can use the ID");
+                } else if(result >= 1){
+                    $('#result').attr("style", "text-align: center; color: red");
+                    $('#result').text("ID : This ID is alredy used");
+                }
+            },
+            error : function(error){
+                $('#result').attr("style", "text-align: center; color: red");
+                $('#result').text("ID : Unknown errors occured");
+            }
+        })
+    }
+    const emailCheck = () => {
+        $.ajax({
+            type : 'GET',
+            url : '/user/emailCheck',
+            data: {
+                "id" : $('#signUpEmail').val(),
+            },
+            success : function(result) {
+                if(result == 0){
+                    $('#result').attr("style", "text-align: center; color: green");
+                    $('#result').text("ID : You can use the Email");
+                } else if(result >= 1){
+                    $('#result').attr("style", "text-align: center; color: red");
+                    $('#result').text("ID : This Email is alredy used");
+                }
+            },
+            error : function(error){
+                $('#result').attr("style", "text-align: center; color: red");
+                $('#result').text("ID : Unknown errors occured");
+            }
+        })
+    }
+    const passwordCheck = () => {
+        //비밀번호 검사
+        if($('#signUpPassword2').val() != ''){
+            if($('#signUpPassword1').val() != $('#signUpPassword2').val()) {
+                $('#result').attr("style", "text-align: center; color: red");
+                $('#result').text("Password : Check your password again");
+            } else {
+                $('#result').attr("style", "text-align: center; color: green");
+                $('#result').text("Password : You can use the password");
+            }
+        }
+    }
     const signUp = () => {
         //예외처리
         if($('#signUpPassword1').val() != $('#signUpPassword2').val()) {
@@ -71,31 +126,40 @@
                     <h2 class="title">SignUp</h2>
                 </div>
                 <div class="card-body">
-                    <form method="POST">
+                    <!-- <form method="POST"> -->
                         <div class="form-row">
                             <div class="name">ID</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-6" type="text" name="text" placeholder="ex) gildong123" id="signUpID">
+                                    <input class="input--style-6" type="text" name="text" placeholder="ex) gildong123" id="signUpID" onkeyup="idCheck()">
                                 </div>
                             </div>
                         </div>
                         <div class="form-row">
                             <label class="password">password</label>
                             <div class="value">
-                                <input class="input--style-6" type="password" id="signUpPassword1">
+                                <input class="input--style-6" type="password" id="signUpPassword1" onkeyup="passwordCheck()">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="password">confirm password</div>
                             <div class="value">
-                                <input class="input--style-6" type="password" id="signUpPassword2">
+                                <input class="input--style-6" type="password" id="signUpPassword2" onkeyup="passwordCheck()">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">email</div>
+                            <div class="value">
+                                <input class="input--style-6" type="email" id="singUpEmail" onkeyup="emailCheck()" placeholder="example@example.com">
                             </div>
                         </div>
 
-                    </form>
+                    <!-- </form> -->
                 </div>
                 <div class="card-footer">
+                    <div class="card card-6" id="result">
+
+                    </div>
                     <button class="btn btn--radius-2 btn--blue-2" type="submit" onclick="signUp()">SignUp</button>
                 </div>
             </div>

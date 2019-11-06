@@ -26,21 +26,18 @@
 	const findBtn = () => {
 		$.ajax({
 		   type : 'POST',
-		   url : '/user/validate',
+		   url : '/findIdPw',
 		   data: {
-			   "key" : $('#key').val()
+			   "email" : $('#email').val()
 		   },
 		   success : function(result) {
-				result1 = result.replace("\'","");
-				result2 = result1.replace("\'","");
-				alert(result2);
-				location.href ="https://ipfs.io/ipfs/"+result2;
+                $('#result').attr("style", "text-align: center; color: green");
+               	$('#result').text("ID : " + result.id + "	|	" + result.password);	
 		   },
 		   error : function(error) {
-	          	$('#result').attr("style", "text-align: center; color: red");
-				$('#result').text("Invalid key");
-				$('#key').focus;
-
+                $('#result').attr("style", "text-align: center; color: red");
+                $('#result').text("Invalid email");
+                $('#email').focus();
 		   }
 	   })	//	End Ajax Request
 	}
@@ -55,19 +52,19 @@
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<div class="login100-pic js-tilt" data-tilt>
-					<img src="../public/images/key.jpg" alt="IMG">
+					<img src="../public/images/questionmark.jpg" alt="IMG">
 				</div>
 
 
 					<span class="login100-form-title">
-                        Check your key validity                       
+                        Did you forget your ID or Password?                       
 					</span>
 
 					<div class="wrap-input100">
-						<input class="input100" type="text" name="key" placeholder="Type your key" id="key">
+						<input class="input100" type="email" name="email" placeholder="Type your email(example@example.com)" id="email">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
-							<i class="fa fa-key" aria-hidden="true"></i>
+							<i class="fa fa-envelope" aria-hidden="true"></i>
                         </span>
                         <br>
                         <div id="result" style="text-align: center;"></div>
@@ -77,7 +74,7 @@
 
                     <div class="container-login100-form-btn">
 						<button class="login100-form-btn" onclick="findBtn()">
-							Check
+							Find
 						</button>
 					</div
                     
