@@ -1,57 +1,131 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>JavaScript file upload</title>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <script src="https://wzrd.in/standalone/buffer"></script>
-    <script src="https://unpkg.com/ipfs-api@9.0.0/dist/index.js"
-    integrity="sha384-5bXRcW9kyxxnSMbOoHzraqa7Z0PQWIao+cgeg327zit1hz5LZCEbIMx/LWKPReuB"
-    crossorigin="anonymous"></script>
-  </head>
-  <script type="text/javascript">
-    function upload() {
-      const reader = new FileReader();
-      reader.onloadend = function() {
-        const ipfs = window.IpfsApi('localhost', 5001) // Connect to IPFS
-        const buf = buffer.Buffer(reader.result) // Convert data into buffer
-        ipfs.files.add(buf, (err, result) => { // Upload buffer to IPFS
-          if(err) {
-            console.error(err)
-            return
-          }
-          //let url = `https://ipfs.io/ipfs/${result[0].hash}`
-          let hash = `${result[0].hash}`
-          //console.log(`Url --> ${url}`)
-          document.getElementById("hash").value = hash
-          //document.getElementById("url").innerHTML= url
-          //document.getElementById("url").href= url
-          //document.getElementById("output").src = url
-        })
-      }
-      const photo = document.getElementById("photo");
-      reader.readAsArrayBuffer(photo.files[0]); // Read Provided File
+
+<head>
+  <title>JavaScript file upload</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Colorlib Templates">
+  <meta name="author" content="Colorlib">
+  <meta name="keywords" content="Colorlib Templates">
+
+  <script src="https://wzrd.in/standalone/buffer"></script>
+  <script src="https://unpkg.com/ipfs-api@9.0.0/dist/index.js"
+  integrity="sha384-5bXRcW9kyxxnSMbOoHzraqa7Z0PQWIao+cgeg327zit1hz5LZCEbIMx/LWKPReuB"
+  crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="../public/css/IPFS.css">
+
+  <!-- Font special for pages-->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+
+  <!-- Main CSS-->
+  <link href="../public/css/IPFS.css" rel="stylesheet" media="all">
+  <script src = "http://code.jquery.com/jquery-1.4.4.min.js"></script>
+</head>
+<script type="text/javascript">
+  function upload() {
+    const reader = new FileReader();
+    reader.onloadend = function() {
+      const ipfs = window.IpfsApi('localhost', 5001) // Connect to IPFS
+      const buf = buffer.Buffer(reader.result) // Convert data into buffer
+      ipfs.files.add(buf, (err, result) => { // Upload buffer to IPFS
+        if(err) {
+          console.error(err)
+          return
+        }
+        //let url = `https://ipfs.io/ipfs/${result[0].hash}`
+        let hash = `${result[0].hash}`
+        //console.log(`Url --> ${url}`)
+        document.getElementById("hash").value = hash
+        //document.getElementById("url").innerHTML= url
+        //document.getElementById("url").href= url
+        //document.getElementById("output").src = url
+      })
     }
+    const photo = document.getElementById("photo");
+    reader.readAsArrayBuffer(photo.files[0]); // Read Provided File
+    alert("등록 성공");
+  }
 
-  </script>
+</script>
   <body>
-    <form action="/">
-      <fieldset>
-        <legend>Upload photo</legend>
-        <input type="file" name="photo" id="photo">
-        <button type="button" onclick="upload()">Upload</button>
-      </fieldset>
-    </form>
-    </br>
-    </br>
+      <div class="page-wrapper p-t-100 p-b-50">
+          <div class="wrapper wrapper--w900">
+              <div class="card card-6">
+                  <div class="card-heading">
+                      <h2 class="title">Photo Upload</h2>
+                  </div>
+                  <div class="card-body">
+                      <form method="POST">
+                          <div class="form-row">
+                              <div class="value">
+                                  <a><b>1.사진을 등록해 주세요.</b></a>
+                              <form action="/">
+                              <div class="filebox bs3-primary">
+        							<input class="upload-name" value="파일선택" disabled="disabled">
 
-    <form method="POST" action="/user/test">
-      <input id="hash" name="hash" type="hidden">
-      <input id="private_key" name="private_key" type ="text" placeholder="받으신 개인키 입력!">
-      <button type="submit">블록체인 등록</button>
-    </form>
+                                        <label class="btn--radius-1 btn--blue-2" for="photo">파일찾기</label>
+              						  <input type="file" id="photo" class="upload-hidden">
+                                      <div class="card-footer">
+                                        <button class="btn btn--radius btn--blue-2" type="button" onclick="upload()">Upload</button>
+                                    </div>
+                              </div>
 
-    </br>
-    </br>
-    <img id="output">
+                              </form>
+                              </div>
+                          </div>
+                          <div class="form-row">
+                              <div class="value">
+                                  <a><b>2.받으신 개인키 입력!</b></a>
+                              <form method="POST" action="/user/test">
+                                  <div class="filebox bs3-primary">
+                                  <input id="hash" name="hash" type="hidden">
+                                  <input class="upload-name" id="private_key" name="private_key"placeholder="ex) 0xfb3435E041F166A5De057E7a8e8F5Be08e7EdB8f">
+
+                                <button class="btn btn--radius-2 btn--blue-2" type="submit">블록체인 등록</button>
+
+                            </div>
+                              </form>
+                              </div>
+                          </div>
+                              <img id="output">
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <!-- Jquery JS-->
+      <script src="../public/vendor/jquery/jquery.min.js"></script>
+
+      <script src="../public/javascripts/IPFS.js"></script>
+      <!-- Main JS-->
+      <script src="../public/javascripts/global.js"></script>
+
   </body>
+
+
+
+
+  <!-- <body>
+     <div class="page-wrapper p-t-100 p-b-50">
+         <div class="wrapper wrapper--w900">
+             <div class="card card-6">
+                 <h2 class="title">Upload photo</h2>
+                <form action="/">
+                  <fieldset>
+                    <input type="file" name="photo" id="photo">
+                    <button type="button" onclick="upload()">Upload</button>
+                  </fieldset>
+                </form>
+                </br>
+                </br>
+                <a id="url"></a>
+                </br>
+                </br>
+                <img id="output">
+            </div>
+        </div>
+    </div>
+  </body> -->
 </html>
