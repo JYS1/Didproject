@@ -37,6 +37,7 @@
         let hash = `${result[0].hash}`
         //console.log(`Url --> ${url}`)
         document.getElementById("hash").value = hash
+        console.log(hash)
         //document.getElementById("url").innerHTML= url
         //document.getElementById("url").href= url
         //document.getElementById("output").src = url
@@ -44,8 +45,27 @@
     }
     const photo = document.getElementById("photo");
     reader.readAsArrayBuffer(photo.files[0]); // Read Provided File
-    alert("등록 성공");
+    //alert("등록 성공");
   }
+  const trans_hash = () => {
+        //예외처리
+        $.ajax({
+            type : 'POST',
+            url : '/user/contract',
+            data: {
+                "hash" : $('#hash').val(),
+                "private_key" : $('#private_key').val()
+            },
+            success : function(result) {
+                alert(`${result}`);
+                location.href='/';
+            },
+            error: function(result) {
+                alert('실패');
+            }
+        })
+
+    }
 
 </script>
   <body>
@@ -77,15 +97,15 @@
                           <div class="form-row">
                               <div class="value">
                                   <a><b>2.받으신 개인키 입력!</b></a>
-                              <form method="POST" action="/user/test">
+                              
                                   <div class="filebox bs3-primary">
                                   <input id="hash" name="hash" type="hidden">
                                   <input class="upload-name" id="private_key" name="private_key"placeholder="ex) 0xfb3435E041F166A5De057E7a8e8F5Be08e7EdB8f">
 
-                                <button class="btn btn--radius-2 btn--blue-2" type="submit">블록체인 등록</button>
+                                <button class="btn btn--radius-2 btn--blue-2" onclick='trans_hash()' >블록체인 등록</button>
 
                             </div>
-                              </form>
+                            
                               </div>
                           </div>
                               <img id="output">

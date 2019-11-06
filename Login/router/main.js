@@ -18,9 +18,9 @@ module.exports = function(app)
         res.render('login.html');
     });
 
-    // app.get('/validation', (req,res) => {
-    //     res.render('validation.html');
-    // })
+    app.get('/validation', (req,res) => {
+        res.render('checkKey.html');
+    })
 
     app.post('/login', (req,res) => {
         let id = req.body.id;

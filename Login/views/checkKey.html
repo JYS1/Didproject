@@ -26,12 +26,15 @@
 	const findBtn = () => {
 		$.ajax({
 		   type : 'POST',
-		   url : '/findIdPw',
+		   url : '/user/validate',
 		   data: {
 			   "key" : $('#key').val()
 		   },
 		   success : function(result) {
-				// 비워놈
+				result1 = result.replace("\'","");
+				result2 = result1.replace("\'","");
+				alert(result2);
+				location.href ="https://ipfs.io/ipfs/"+result2;
 				
 		   },
 		   error : function(error) {
