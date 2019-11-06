@@ -17,14 +17,13 @@ module.exports = function(app){
     app.post('/user/register', async (req, res) => {
         let id = req.body.id;
         let password = req.body.password;
-        let meta = await web3.eth.personal.newAccount(password);
+        // let meta = await web3.eth.personal.newAccount(password);
 
         console.log(id);
         console.log(password);
-        console.log(meta);
 
-        let sql_meta = `select meta from user;`
-        let sql = `insert into user(id, password, meta) values('${id}','${password}','${meta}');`
+        // let sql_meta = `select meta from user;`
+        let sql = `insert into user(id, password) values('${id}','${password}');`
 
         db.query(sql, function(err, rows, fields){
             if(err){
