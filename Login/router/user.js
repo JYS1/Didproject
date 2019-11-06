@@ -13,7 +13,7 @@ var myContract = new web3.eth.Contract([
 		"inputs": [
 			{
 				"name": "_hash",
-				"type": "string"
+				"type": "address"
 			},
 			{
 				"name": "_ipfs",
@@ -31,7 +31,7 @@ var myContract = new web3.eth.Contract([
 		"inputs": [
 			{
 				"name": "_hash",
-				"type": "string"
+				"type": "address"
 			}
 		],
 		"name": "sendHash",
@@ -45,7 +45,7 @@ var myContract = new web3.eth.Contract([
 		"stateMutability": "view",
 		"type": "function"
 	}
-],'0xe776ea6c73bbaf40cc38ace96cb63ed952debefd',{
+],'0x8b25f3317bfb63f81a915f6f226fb13edd6d8ef5',{
     from: '0x3a6adf7aaa27093e89f4f0dc09fe881cea2d3c87',
     getPrice: '20000000'
 });
@@ -88,8 +88,6 @@ module.exports = function(app){
     app.post('/user/contract', async (req, res)=>{
         let hash = req.body.hash;
         let key = req.body.private_key;
-        key="'"+key+"'";
-        hash="'"+hash+"'";
         //let sql = `select meta from user;`
 
         console.log(hash);
@@ -116,7 +114,6 @@ module.exports = function(app){
 
     app.post('/user/validate', async (req, res)=>{
         let key = req.body.key;
-        
         console.log(key);
 
         let hash = await myContract.methods.sendHash(key).call();
