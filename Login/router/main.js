@@ -14,6 +14,14 @@ module.exports = function(app)
         res.render('IPFS.html');
     });
 
+    app.get('/login', (req,res) => {
+        res.render('login.html');
+    });
+
+    // app.get('/validation', (req,res) => {
+    //     res.render('validation.html');
+    // })
+
     app.post('/login', (req,res) => {
         let id = req.body.id;
         let password = req.body.password;
@@ -34,7 +42,5 @@ module.exports = function(app)
             }
 
         });
-        console.log('ㅇㅇ');
-
     })
 }
