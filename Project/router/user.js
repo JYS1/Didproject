@@ -20,7 +20,7 @@ var myContract = new web3.eth.Contract([
 				"type": "string"
 			}
 		],
-		"name": "sendHash",
+		"name": "saveHash",
 		"outputs": [],
 		"payable": false,
 		"stateMutability": "nonpayable",
@@ -34,7 +34,7 @@ var myContract = new web3.eth.Contract([
 				"type": "address"
 			}
 		],
-		"name": "getHash",
+		"name": "sendHash",
 		"outputs": [
 			{
 				"name": "",
@@ -45,7 +45,7 @@ var myContract = new web3.eth.Contract([
 		"stateMutability": "view",
 		"type": "function"
 	}
-],'0x3c450062519053ffe6537242839707cf753a9de5',{
+],'0xaa5f1a6c35e4343c9763b6de601a48a647a2e444',{
     from: '0x8de10d828c913c528ee3cf81ce8dd23a3cb26fa1',
     getPrice: '20000000'
 });
