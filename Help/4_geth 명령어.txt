@@ -1,4 +1,4 @@
--Geth- 
+﻿-Geth- 
 
 geth init genesis.json --datadir ./data
 geth --rpc --rpcapi net,web3,eth,miner,admin,personal --datadir ./ --networkid 777 --nodiscover --rpccorsdomain "*"
@@ -11,3 +11,6 @@ eth.getBalance(eth.coinbase);
 web3.fromWei(eth.getBalance(eth.coinbase),'ether'); 
 eth.sendTransaction({from : eth.coinbase, to : eth.accounts[1], value : web3.toWei(1,'ether')});
 eth.pendingTransactions 
+
+
+0xF05B68A76D490E69d9e3952142F2913CEE37a3Bc
