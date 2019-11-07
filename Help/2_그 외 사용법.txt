@@ -22,9 +22,3 @@ ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '1234';		
 FLUSH PRIVILEGES;		//권한 업로드
 
 =================================================
--Geth- 
-
-geth init genesis.json --datadir ./data
-geth --rpc --rpcapi net,web3,eth,miner,admin,personal --datadir ./ --networkid 777 --nodiscover 
-----8545 port 충돌시: geth --rpc --rpcapi net,web3,eth,miner,admin,personal --datadir ./ --networkid 777 --nodiscover --port 30302 --rpcport 7545
-geth attach http://localhost:8545 -	//geth 접근 
