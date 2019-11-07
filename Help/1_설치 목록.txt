@@ -1,0 +1,7 @@
+#설치 필수!!
+
+1. IPFS 설치 - https://dist.ipfs.io/#go-ipfs
+	1.1 go-lang 없으시면 - https://golang.org/dl/
+2. Go-ethereum 설치 버전은 자유 실습때는 1.8.27 - https://geth.ethereum.org/downloads/
+3. mysql server 설치 - https://dev.mysql.com/downloads/installer/
+4. nodeJS 설치 - https://nodejs.org/ko/
