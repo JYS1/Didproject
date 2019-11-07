@@ -44,9 +44,8 @@ var myContract = new web3.eth.Contract([
 		"payable": false,
 		"stateMutability": "view",
 		"type": "function"
-	}
-],'0xe1a9850c8181a963e3124a45db45ce05f4256b06',{		//스마트 컨트렉트
-    from: '0x8de10d828c913c528ee3cf81ce8dd23a3cb26fa1',	//eth.coinbase
+],'0x5b8b89ecd8b013dd4f3baf7e305693afc1dcf225',{
+    from: '0x3a6adf7aaa27093e89f4f0dc09fe881cea2d3c87',
     getPrice: '20000000'
 });
 
