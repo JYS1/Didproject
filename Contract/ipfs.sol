@@ -4,11 +4,11 @@ contract StoreIPFS {
 
     mapping(address => string) ipfsData;
 
-    function sendHash(address hash , string ipfs_hash) public {
+    function saveHash(address hash , string ipfs_hash) public {
         ipfsData[hash] = ipfs_hash;
     }
 
-    function getHash(address _hash) public view returns string {
+    function sendHash(address _hash) public view returns (string) {
         var get_ipfs = ipfsData[_hash];
         return get_ipfs;
     }

@@ -2,13 +2,13 @@ pragma solidity ^0.4.18;
 
 contract StoreIPFS {
 
-    mapping(string => string) ipfsData;
-    
-    function saveHash(string _hash , string _ipfs) public {
-        ipfsData[_hash] = _ipfs;
+    mapping(address => string) ipfsData;
+
+    function saveHash(address hash , string ipfs_hash) public {
+        ipfsData[hash] = ipfs_hash;
     }
-    
-    function sendHash(string _hash) public view returns (string) {
+
+    function sendHash(address _hash) public view returns (string) {
         var get_ipfs = ipfsData[_hash];
         return get_ipfs;
     }

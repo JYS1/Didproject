@@ -12,15 +12,15 @@ var myContract = new web3.eth.Contract([
 		"constant": false,
 		"inputs": [
 			{
-				"name": "_hash",
+				"name": "hash",
 				"type": "address"
 			},
 			{
-				"name": "_ipfs",
+				"name": "ipfs_hash",
 				"type": "string"
 			}
 		],
-		"name": "saveHash",
+		"name": "sendHash",
 		"outputs": [],
 		"payable": false,
 		"stateMutability": "nonpayable",
@@ -34,7 +34,7 @@ var myContract = new web3.eth.Contract([
 				"type": "address"
 			}
 		],
-		"name": "sendHash",
+		"name": "getHash",
 		"outputs": [
 			{
 				"name": "",
@@ -44,8 +44,9 @@ var myContract = new web3.eth.Contract([
 		"payable": false,
 		"stateMutability": "view",
 		"type": "function"
-],'0x5b8b89ecd8b013dd4f3baf7e305693afc1dcf225',{
-    from: '0x3a6adf7aaa27093e89f4f0dc09fe881cea2d3c87',
+	}
+],'0x3c450062519053ffe6537242839707cf753a9de5',{
+    from: '0x8de10d828c913c528ee3cf81ce8dd23a3cb26fa1',
     getPrice: '20000000'
 });
 
@@ -95,7 +96,7 @@ module.exports = function(app){
 
 
 
-        myContract.methods.saveHash(key, hash).send({from: '0x3a6adf7aaa27093e89f4f0dc09fe881cea2d3c87'});
+        myContract.methods.saveHash(key, hash).send({from: '0x8de10d828c913c528ee3cf81ce8dd23a3cb26fa1'});
 
         res.send("블록체인 등록!");
     })
@@ -104,7 +105,8 @@ module.exports = function(app){
         let key = req.body.key;
         console.log(key);
 
-        let hash = await myContract.methods.sendHash(key).call();
+        let hash = await myContract.methods.sendHash(key).call({from: '0x8de10d828c913c528ee3cf81ce8dd23a3cb26fa1'});
+
         console.log(hash);
         res.send(hash);
     })
