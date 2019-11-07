@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
-	<link rel="icon" type="image/png" href="../public/images/icons/favicon.ico"/>
+	<link rel="icon" type="image/png" href="../public/images/icons/find.ico"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="../public/vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
@@ -32,7 +32,7 @@
 		   },
 		   success : function(result) {
                 $('#result').attr("style", "text-align: center; color: green");
-               	$('#result').text("ID : " + result.id + "	|	" + result.password);	
+               	$('#result').text("ID : " + result.id + "	|	" + result.password);
 		   },
 		   error : function(error) {
                 $('#result').attr("style", "text-align: center; color: red");
@@ -57,7 +57,7 @@
 
 
 					<span class="login100-form-title">
-                        Did you forget your ID or Password?                       
+                        Did you forget your ID or Password?
 					</span>
 
 					<div class="wrap-input100">
@@ -69,16 +69,16 @@
                         <br>
                         <div id="result" style="text-align: center;"></div>
 					</div>
-                    
-                    
+
+
 
                     <div class="container-login100-form-btn">
 						<button class="login100-form-btn" onclick="findBtn()">
 							Find
 						</button>
 					</div
-                    
-                   
+
+
 
 					<div class="text-center p-t-136">
 						<a class="txt2" href="signUp">
