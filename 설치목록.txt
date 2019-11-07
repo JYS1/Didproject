@@ -1,11 +1,18 @@
-﻿-nodeJS-
+#설치 필수!!
+
+1. IPFS 설치 - https://dist.ipfs.io/#go-ipfs
+	1.1 go-lang 없으시면 - https://golang.org/dl/
+2. Go-ethereum 설치 버전은 자유 실습때는 1.8.27 - https://geth.ethereum.org/downloads/
+3. mysql server 설치 - https://dev.mysql.com/downloads/installer/
+4. nodeJS 설치 - https://nodejs.org/ko/
+
+==================================================
+-nodeJS-
 	npm install express-generator -g		// Express Framework 틀 기본구성 확인할때 좋음
 	express Hello --view==ejs			// Express 틀을 Hello라는 폴더명으로 구성 뷰엔진을 ejs로 디폴트 값은 jade형식
 ==================================================
 -mySQL-
 
-mysql을 먼저 설치해야한다.
-  
 create database DImoD;
 use DImoD;
 
