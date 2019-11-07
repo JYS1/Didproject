@@ -45,15 +45,15 @@ var myContract = new web3.eth.Contract([
 		"stateMutability": "view",
 		"type": "function"
 	}
-],'0x8b25f3317bfb63f81a915f6f226fb13edd6d8ef5',{
-    from: '0x3a6adf7aaa27093e89f4f0dc09fe881cea2d3c87',
+],'0xe1a9850c8181a963e3124a45db45ce05f4256b06',{		//스마트 컨트렉트
+    from: '0x8de10d828c913c528ee3cf81ce8dd23a3cb26fa1',	//eth.coinbase
     getPrice: '20000000'
 });
-    
- 
+
+
 
 module.exports = function(app){
-    
+
     app.post('/user/test', async (req, res) =>{
         hash = req.body.hash;
         console.log(hash);
@@ -93,22 +93,11 @@ module.exports = function(app){
         console.log(hash);
         console.log(key);
 
-        // db.query(sql, function(err, row, fields){
-        //     if(err){
-        //         console.log(err);
-        //         res.send(`에러가 발생`);
-        //     }else{
-        //         if(key=rows[0].meta){
-        //             break;
-        //         }else{
-        //             res.send('해당 개인키는 존재하지 않습니다');
-        //         }
-        //     }
-        // });
-        
-        
+
+
+
         myContract.methods.saveHash(key, hash).send({from: '0x3a6adf7aaa27093e89f4f0dc09fe881cea2d3c87'});
-        
+
         res.send("블록체인 등록!");
     })
 

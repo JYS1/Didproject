@@ -1,16 +1,15 @@
-pragma solidity ^0.4.24;
+pragma solidity ^0.4.18;
 
 contract StoreIPFS {
-    struct IPFS_map{
-        string [] ipfs_hash;
-    }
-    mapping(string => IPFS_map) ipfsData;
-    function sendHash(string memory hash , string ipfs_hash) public {
-        ipfsData[hash].ipfs_hash.push(ipfs_hash);
+
+    mapping(address => string) ipfsData;
+
+    function sendHash(address hash , string ipfs_hash) public {
+        ipfsData[hash] = ipfs_hash;
     }
 
-    function getHash(string _hash) public view returns string {
+    function getHash(address _hash) public view returns string {
         var get_ipfs = ipfsData[_hash];
-        return get_ipfs.ipfs_hash;
+        return get_ipfs;
     }
 }
