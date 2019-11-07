@@ -45,7 +45,7 @@ var myContract = new web3.eth.Contract([
 		"stateMutability": "view",
 		"type": "function"
 	}
-],'0x8b25f3317bfb63f81a915f6f226fb13edd6d8ef5',{
+],'0x5b8b89ecd8b013dd4f3baf7e305693afc1dcf225',{
     from: '0x3a6adf7aaa27093e89f4f0dc09fe881cea2d3c87',
     getPrice: '20000000'
 });
