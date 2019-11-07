@@ -1,0 +1,29 @@
+#설치 필수!!
+
+1. IPFS 설치 - https://dist.ipfs.io/#go-ipfs
+	1.1 go-lang 없으시면 - https://golang.org/dl/
+2. Go-ethereum 설치 버전은 자유 실습때는 1.8.27 - https://geth.ethereum.org/downloads/
+3. mysql server 설치 - https://dev.mysql.com/downloads/installer/
+4. nodeJS 설치 - https://nodejs.org/ko/
+
+==================================================
+-nodeJS-
+	npm install express-generator -g		// Express Framework 틀 기본구성 확인할때 좋음
+	express Hello --view==ejs			// Express 틀을 Hello라는 폴더명으로 구성 뷰엔진을 ejs로 디폴트 값은 jade형식
+==================================================
+-mySQL-
+
+create database DImoD;
+use DImoD;
+
+CREATE TABLE user (
+	id VARCHAR(15) PRIMARY KEY,
+	password INT NOT NULL,
+	meta VARCHAR(50) NOT NULL UNIQUE
+);
+으로 생성후 동작 하지만 mysql권한에러가 뜰 가능성이 높으니 밑에 명령어 생성
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '1234';		// my-sql client 권한 승인
+FLUSH PRIVILEGES;		//권한 업로드
+
+=================================================

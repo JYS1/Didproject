@@ -14,6 +14,9 @@
 6. 다른 OS linux등을 이용한 구축시도(예정)
 7. docker를 통한 개별 server(예정)
 
-2019-11-04 Login 및 HelloExpress(Express framwork) 업로드
-2019-11-04 불필요한 파일들 제거
-2019-11-05 IPFS 동작이 필요한 UI/UX 추가 및 IPFS 설치 방법 업로드 
+
+----update----
+1) 2019-11-04 Login 및 HelloExpress(Express framwork) 업로드
+2) 2019-11-04 불필요한 파일들 제거
+3) 2019-11-05 IPFS 동작이 필요한 UI/UX 추가 및 IPFS 설치 방법 업로드
+4) 2019-11-06 go-ethereum 환경구축 server와의 연동 스마트 컨트렉트 작성 및 연동
