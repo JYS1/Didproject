@@ -90,23 +90,36 @@ module.exports = function(app){
     app.post('/user/contract', async (req, res)=>{
         let hash = req.body.hash;
         let key = req.body.private_key;
-        //let sql = `select meta from user;`
+        let id = req.body.id;
         
-        console.log(key);
-        console.log(hash);
+        // console.log(id);
+        // console.log(key);
+        console.log("hash" + hash);
+        const cipher = crypto.createCipher('aes-256-cbc', key);
+        let result = cipher.update(hash, 'utf8', 'base64'); // 'HbMtmFdroLU0arLpMflQ'
+        result += cipher.final('base64');
+        console.log(result);
 
-        myContract.methods.saveHash(key, hash).send({from: "0xc35fbed59c35ebdbaad7a6198096e98919ae7c98"});
+        myContract.methods.saveHash(id, result).send({from: "0xc35fbed59c35ebdbaad7a6198096e98919ae7c98"});
 
         res.send("블록체인 등록!");
     })
 
     app.post('/user/validate', async (req, res)=>{
+        
+        let id = req.body.id;
         let key = req.body.key;
-        console.log(key);
 
-        let hash = await myContract.methods.sendHash(key).call({from: "0xc35fbed59c35ebdbaad7a6198096e98919ae7c98"});
-
+       
+        let hash = await myContract.methods.sendHash(id).call({from: "0xc35fbed59c35ebdbaad7a6198096e98919ae7c98"});
         console.log(hash);
-        res.send(hash);
+        console.log(id);
+        
+        const decipher = crypto.createDecipher('aes-256-cbc', key);
+        let result = decipher.update(hash, 'base64', 'utf8'); 
+        result += decipher.final('utf8'); 
+        console.log(result);
+
+        res.send(result);
     })
 }

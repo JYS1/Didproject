@@ -33,8 +33,7 @@
 		   },
 		   success : function(result) {
 				alert('성공');
-				location.href='/IPFS'
-				// alert(`${result}`);
+				location.href = result + $('#loginid').val();
 		   },
 		   error : function(error) {
 			   alert('실패');

@@ -23,6 +23,8 @@
   <link href="../public/css/IPFS.css" rel="stylesheet" media="all">
   <script src = "http://code.jquery.com/jquery-1.4.4.min.js"></script>
 </head>
+
+
 <script type="text/javascript">
   function upload() {
     const reader = new FileReader();
@@ -50,12 +52,15 @@
   }
   const trans_hash = () => {
         //예외처리
+        var link = document.location.href;
+        link = link.substr(27);
         $.ajax({
             type : 'POST',
             url : '/user/contract',
             data: {
                 "hash" : $('#hash').val(),
-                "private_key" : $('#private_key').val()
+                "private_key" : $('#private_key').val(),
+                "id" : link
             },
             success : function(result) {
                 alert(`${result}`);
