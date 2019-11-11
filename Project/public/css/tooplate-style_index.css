@@ -234,6 +234,7 @@ h5 {
 @media (max-width: 767px) {
   .btn-danger {
     margin-left: 49%;
+	padding-left: 13%;
   }
 }
 
