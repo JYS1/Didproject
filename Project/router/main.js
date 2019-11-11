@@ -34,11 +34,11 @@ module.exports = function(app)
                 console.log(err);
             }
             else if(rows[0].id == id && rows[0].password == password){
-                url = '/sss';
                 console.log("일치합니다");
-                res.send(url);
+                res.send('/IPFS?type=');
             }else {
-                result = '실패'
+                result = '해당 아이디는 존재하지 않습니다'
+                res.send(result);
             }
 
         });

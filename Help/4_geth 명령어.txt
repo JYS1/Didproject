@@ -1,4 +1,4 @@
--Geth- 
+﻿-Geth- 
 
 geth init genesis.json --datadir ./data
 geth --rpc --rpcapi net,web3,eth,miner,admin,personal --datadir ./ --networkid 777 --nodiscover --rpccorsdomain "*"
@@ -15,10 +15,5 @@ eth.pendingTransactions
 
 
 
-회원가입하면 crypto sha256 -> 해쉬값 <- 아무대
-			계좌주소 
 
-web3.eth.newAccount
-sha256(PW) =
-PW -> ipfs hash 
 

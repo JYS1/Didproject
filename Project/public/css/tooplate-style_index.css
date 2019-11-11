@@ -217,7 +217,7 @@ h5 {
 	width:100%;
 }
 
-.btn-danger {
+.btn-danger1{
 	font-size: 1.5rem;
 	margin-top: 20px;
 	padding-left: 60px;
@@ -231,9 +231,61 @@ h5 {
 	width:50%;
 }
 
-@media (max-width: 767px) {
-  .btn-danger {
-    margin-left: 49%;
+.btn-danger2{
+	font-size: 1.5rem;
+	margin-top: 20px;
+	padding-left: 60px;
+	padding-right: 60px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: #C66666;
+	border-color: #C66666;
+	background-color: transparent !important;
+    background-image: none !important;
+	width:50%;
+}
+
+@media (max-width: 414px) { /*아이폰6,7,8*/
+  .btn-danger1 {
+	  margin-left: 42%;
+  }
+}
+
+@media (max-width: 414px) { /*아이폰6,7,8*/
+  .btn-danger2 {
+	  margin-left: 42%;
+	  padding-left: 38px;
+  }
+}
+
+
+
+
+@media (max-width: 375px) { /*아이폰X*/
+  .btn-danger1 {
+	  padding-left: 52px;
+  }
+}
+
+@media (max-width: 375px) { /*아이폰X*/
+  .btn-danger2 {
+	  padding-left: 28px;
+  }
+}
+
+
+
+
+@media (max-width: 360px) { /*갤럭시*/
+  .btn-danger1 {
+	  width: 165px;
+	  padding-left: 55px;
+  }
+}
+
+@media (max-width: 360px) { /*갤럭시*/
+  .btn-danger2 {
+	  width: 165px;
   }
 }
 
