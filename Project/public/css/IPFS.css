@@ -219,6 +219,8 @@ h2 {
   font-size: 30px;
 }
 
+
+
 h3 {
   font-size: 24px;
 }
@@ -502,12 +504,21 @@ h6 {
   }
 }
 
-@media (max-width: 360px) { /*아이폰X*/
+@media (max-width: 360px) { /*갤럭시*/
   .filebox.bs3-primary label{
     margin-left: 62%;
     padding-top: 7px;
     height: 35px;
     border-top-width: 0px;
+  }
+}
+
+@media (max-width: 320px) { /*아이폰se*/
+  .filebox.bs3-primary label {
+      margin-left: 56.5%;
+      padding-top: 7px;
+      height: 35px;
+      border-top-width: 0px;
   }
 }
 
@@ -798,6 +809,12 @@ textarea {
 @media (max-width: 767px) {
   .title {
     padding: 0 15px;
+  }
+}
+
+@media (max-width: 375px) { /*아이폰se*/
+  .title {
+    margin-left: 17px;
   }
 }
 

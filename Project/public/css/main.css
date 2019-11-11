@@ -148,7 +148,29 @@ iframe {
   color: #666666;
 }
 
+@media (max-width: 414px) { /*아이폰6,7,8*/
+  .txt2 {
+    padding-left: 180px;
+  }
+}
 
+@media (max-width: 375px) { /*아이폰X*/
+  .txt2 {
+    padding-left: 145px;
+  }
+}
+
+@media (max-width: 360px) { /*갤럭시*/
+  .txt2 {
+    padding-left: 135px;
+  }
+}
+
+@media (max-width: 320px) { /*아이폰se*/
+  .txt2 {
+    padding-left: 100px;
+  }
+}
 /*//////////////////////////////////////////////////////////////////
 [ login ]*/
 
