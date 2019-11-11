@@ -4,12 +4,12 @@ contract StoreIPFS {
 
     mapping(string => string) ipfsData;
 
-    function saveHash(string hash , string ipfs_hash) public {
-        ipfsData[hash] = ipfs_hash;
+    function saveHash(string _id , string ipfs_hash) public {
+        ipfsData[_id] = ipfs_hash;
     }
 
-    function sendHash(string _hash) public view returns (string) {
-        var get_ipfs = ipfsData[_hash];
+    function sendHash(string _id) public view returns (string) {
+        var get_ipfs = ipfsData[_id];
         return get_ipfs;
     }
 }
