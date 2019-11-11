@@ -21,101 +21,170 @@
     <script src = "http://code.jquery.com/jquery-1.4.4.min.js"></script>
 
     <script>
-    const test = () => {
-        $.ajax({
-            type : 'POST',
-            url : '/user/test',
-            data : {
-                "id" : $('#signUpID').val()
-            },
-            success : function(result) {
-                alert('하이루');
-            },
-            error: function(error) {
-                alert('실패');
-            }
-        })	//	End Ajax Request
-    }
+    // const test = () => {
+    //     $.ajax({
+    //         type : 'POST',
+    //         url : '/user/test',
+    //         data : {
+    //             "id" : $('#signUpID').val()
+    //         },
+    //         success : function(result) {
+    //             alert('하이루');
+    //         },
+    //         error: function(error) {
+    //             alert('실패');
+    //         }
+    //     })	//	End Ajax Request
+    // }
+    var idFlag = false;
+    var pwFlag = false;
+    var emFlag = false;
     const idCheck = () => {
-        $.ajax({
-            type : 'GET',
-            url : '/user/idCheck',
-            data: {
-                "id" : $('#signUpID').val(),
-            },
-            success : function(result) {
-                if(result == 0){
-                    $('#result').attr("style", "text-align: center; color: green");
-                    $('#result').text("ID : You can use the ID");
-                } else if(result >= 1){
-                    $('#result').attr("style", "text-align: center; color: red");
-                    $('#result').text("ID : This ID is alredy used");
+        if($('#signUpID').val().length == 0){
+            $('#idPannel').attr("style", "color: grey");
+            $('#idPannel').text("ID should be between 4-20 characters");
+            $('#signUpID').attr("style", "");
+        } else if($('#signUpID').val().length < 4 || $('#signUpID').val().length > 20){
+            $('#idPannel').attr("style", "color: red");
+            $('#idPannel').text("ID should be between 4-20 characters");
+            $('#signUpID').attr("style", "border: 2px solid red;");
+        } else {
+            $.ajax({
+                type : 'GET',
+                url : '/user/idCheck',
+                data: {
+                    "id" : $('#signUpID').val(),
+                },
+                success : function(result) {
+                    if(result == 0){
+                        idFlag = true;
+                        $('#idPannel').attr("style", "color: green");
+                        $('#idPannel').text("You can use this ID");
+                        $('#signUpID').attr("style", "border: 2px solid green;");
+                    } else if(result >= 1){
+                        $('#idPannel').attr("style", "color: red");
+                        $('#idPannel').text("This ID is already used");
+                        $('#signUpID').attr("style", "border: 2px solid red;");
+                    }
+                },
+                error : function(error){
+                    $('#idPannel').attr("style", "color: red");
+                    $('#idPannel').text("Unknown errors occured. Try again");
+                    $('#signUpID').attr("style", "border: 2px solid red;");
                 }
-            },
-            error : function(error){
-                $('#result').attr("style", "text-align: center; color: red");
-                $('#result').text("ID : Unknown errors occured");
-            }
-        })
+            })
+        }
+        
     }
     const emailCheck = () => {
-        $.ajax({
-            type : 'GET',
-            url : '/user/emailCheck',
-            data: {
-                "id" : $('#signUpEmail').val(),
-            },
-            success : function(result) {
-                if(result == 0){
-                    $('#result').attr("style", "text-align: center; color: green");
-                    $('#result').text("ID : You can use the Email");
-                } else if(result >= 1){
-                    $('#result').attr("style", "text-align: center; color: red");
-                    $('#result').text("ID : This Email is alredy used");
+        if($('#signUpEmail').val().length == 0){
+            $('#emailPannel').attr("style", "color: grey");
+            $('#emailPannel').text("Email will be used to find your Id or Password");
+            $('#signUpEmail').attr("style", "");
+        } else {
+            $.ajax({
+                type : 'GET',
+                url : '/user/emailCheck',
+                data: {
+                    "email" : $('#signUpEmail').val(),
+                },
+                success : function(result) {
+                    if(result == 0){
+                        $('#emailPannel').attr("style", "color: green");
+                        $('#emailPannel').text("You can use the Email");
+                        $('#signUpEmail').attr("style", "border: 2px solid green;");
+                        emFlag = true;                        
+                    } else if(result >= 1){
+                        $('#emailPannel').attr("style", "color: red");
+                        $('#emailPannel').text("This Email is alredy used");
+                        $('#signUpEmail').attr("style", "border: 2px solid red;");
+                    }
+                },
+                error : function(error){
+                    $('#emailPannel').attr("style", "color: red");
+                    $('#emailPannel').text("Unknown errors occured. Try again");
+                    $('#signUpEmail').attr("style", "border: 2px solid red;");
                 }
-            },
-            error : function(error){
-                $('#result').attr("style", "text-align: center; color: red");
-                $('#result').text("ID : Unknown errors occured");
-            }
-        })
+            })
+        }
     }
     const passwordCheck = () => {
         //비밀번호 검사
-        if($('#signUpPassword2').val() != ''){
+        let flag = false;
+        if($('#signUpPassword2').val().length > 0 && $('#signUpPassword1').val().length > 0){
             if($('#signUpPassword1').val() != $('#signUpPassword2').val()) {
-                $('#result').attr("style", "text-align: center; color: red");
-                $('#result').text("Password : Check your password again");
+                $('#pw2Pannel').attr("style", "color: red;");
+                $('#pw2Pannel').text("Check your password again");
+                $('#signUpPassword2').attr("style", "border: 2px solid red;");
+                $('#signUpPassword1').attr("style", "border: 2px solid red;");
             } else {
-                $('#result').attr("style", "text-align: center; color: green");
-                $('#result').text("Password : You can use the password");
+                $('#pw2Pannel').attr("style", "color: green");
+                $('#pw2Pannel').text("You can use this password");
+                $('#signUpPassword2').attr("style", "border: 2px solid green;");
+                $('#signUpPassword1').attr("style", "border: 2px solid green;");
+                pwFlag = true;
             }
+        } else {
+            $('#signUpPassword2').attr("style", "");
+            $('#signUpPassword1').attr("style", "");
+            $('#pw2Pannel').text("");
         }
     }
-    const signUp = () => {
+    const checkAll = () => {
         //예외처리
-        if($('#signUpPassword1').val() != $('#signUpPassword2').val()) {
-            alert('비밀번호가 다릅니다.');
-            return false;
-        }
-        $.ajax({
-            type : 'POST',
-            url : '/user/register',
-            data: {
-                "id" : $('#signUpID').val(),
-                "password" : $('#signUpPassword1').val(),
-                "meta": $('#eth_adddress').val()
-            },
-            success : function(result) {
-                alert(`${result}`);
-                location.href='/';
-            },
-            error: function(result) {
-                alert('실패');
+        console.log("idFlag >>>>>>>> " + idFlag);
+        console.log("pwFlag >>>>>>>> " + pwFlag);
+        console.log("emFlag >>>>>>>> " + emFlag);
+        if (!idFlag || !pwFlag || !emFlag) {
+            if (!idFlag) {
+                if ($('#signUpID').val().length == 0) {
+                    $('#signUpID').attr("style", "border: 2px solid red;");
+                    $('#idPannel').attr("style", "color: red");
+                }
+                $('#signUpID').focus();
             }
-        })
-
+            if (!pwFlag) {
+                if ($('#signUpPassword1').val().length == 0) {
+                    $('#signUpPassword1').attr("style", "border: 2px solid red;");
+                    $('#signUpPassword2').attr("style", "border: 2px solid red;");
+                    $('#pw2Pannel').attr("style", "color: red;");
+                    $('#pw2Pannel').text("Check your password again");
+                    $('#signUpPassword1').focus();
+                } else {
+                    $('#pw2Pannel').attr("style", "color: red;");
+                    $('#pw2Pannel').text("Check your password again");
+                    $('#signUpPassword2').focus();
+                }
+            }
+            if (!emFlag) {
+                if ($('#signUpEmail').val().length == 0) {
+                    $('#signUpEmail').attr("style", "border: 2px solid red;");
+                    $('#emailPannel').attr("style", "color: red");
+                    $('#signUpEmail').focus();
+                }
+            }
+            return false;
+        } else {
+            $.ajax({
+                type: 'POST',
+                url: '/user/register',
+                data: {
+                    "id": $('#signUpID').val(),
+                    "password": $('#signUpPassword1').val(),
+                    "email": $('#signUpEmail').val()
+                },
+                success: function (result) {
+                    alert(`${result}`);
+                    location.href = '/';
+                },
+                error: function (result) {
+                    alert('실패');
+                }
+            })
+        }   
     }
+
+
     </script>
 </head>
 
@@ -127,42 +196,43 @@
                     <h2 class="title">SignUp</h2>
                 </div>
                 <div class="card-body">
-                    <!-- <form method="POST"> -->
+                    <form method="POST" onsubmit="return checkAll()">
                         <div class="form-row">
                             <div class="name">ID</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-6" type="text" name="text" placeholder="ex) gildong123" id="signUpID" onkeyup="idCheck()">
+                                    <input class="input--style-6" type="text" name="text" size="30" placeholder="ex) gildong123" id="signUpID" onkeyup="idCheck()">
+                                    <b id="idPannel" style="color: grey;">ID should be between 4-20 characters</b>
                                 </div>
                             </div>
                         </div>
                         <div class="form-row">
                             <label class="password">password</label>
                             <div class="value">
-                                <input class="input--style-6" type="password" id="signUpPassword1" onkeyup="passwordCheck()">
+                                <input class="input--style-6" type="password" size="30" id="signUpPassword1" onkeyup="passwordCheck()">
+                                <b id="pwPannel" style="color:grey;"></b>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="password">confirm password</div>
                             <div class="value">
-                                <input class="input--style-6" type="password" id="signUpPassword2" onkeyup="passwordCheck()">
+                                <input class="input--style-6" type="password" size="30" id="signUpPassword2" onkeyup="passwordCheck()">
+                                <b id="pw2Pannel" style="color:grey;"></b>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="name">email</div>
                             <div class="value">
-                                <input class="input--style-6" type="email" id="singUpEmail" onkeyup="emailCheck()" placeholder="example@example.com">
+                                <input class="input--style-6" type="email" id="signUpEmail" size="30" onkeyup="emailCheck()" placeholder="example@example.com">
+                                <b id="emailPannel" style="color:grey;">Email will be used to find your Id or Password</b>
                             </div>
                         </div>
-
-                    <!-- </form> -->
+                        <div class="card-footer">
+                            <button class="btn btn--radius-2 btn--blue-2" type="submit">SignUp</button>
+                        </div>
+                    </form>
                 </div>
-                <div class="card-footer">
-                    <div class="card card-6" id="result">
-
-                    </div>
-                    <button class="btn btn--radius-2 btn--blue-2" type="submit" onclick="signUp()">SignUp</button>
-                </div>
+                
             </div>
         </div>
     </div>

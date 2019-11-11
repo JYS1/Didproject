@@ -64,14 +64,15 @@ module.exports = function(app){
     app.post('/user/register', async (req, res) => {
         let id = req.body.id;
         let password = req.body.password;
-        let meta = await web3.eth.personal.newAccount(password);
+        let email = req.body.email;
+        //let meta = await web3.eth.personal.newAccount(password);
 
         console.log(id);
         console.log(password);
-        console.log(meta);
+        console.log(email);
 
         //let sql_meta = `select meta from user;`
-        let sql = `insert into user(id, password, meta) values('${id}','${password}','${meta}');`
+        let sql = `insert into user(id, password, email) values('${id}','${password}','${email}');`
 
         db.query(sql, function(err, rows, fields){
             if(err){
@@ -82,7 +83,8 @@ module.exports = function(app){
             }
         });
 
-        res.send(`개인키: ${meta}`);
+        //res.send(`개인키: ${meta}`);
+        res.send(`성공`);
     })
 
     app.post('/user/contract', async (req, res)=>{
@@ -106,5 +108,42 @@ module.exports = function(app){
 
         console.log(hash);
         res.send(hash);
+    })
+
+    //2019-11-08 00:14 - 호식 
+    app.get('/user/idCheck', (req, res) => {
+        let id = req.query.id;
+        let sql = `select count(*) as cnt from user where id = '${id}';`;
+
+        console.log(id);
+
+        db.query(sql, function(err, rows, fields){
+            if(err){
+                console.log("err >>>>" + err);
+                res.send(err);
+            }else{
+                console.log("cnt >>>> " + rows[0].cnt);
+                let result = rows[0].cnt;
+                res.send(`${result}`);
+            }
+        })
+    })
+
+    app.get('/user/emailCheck', (req, res) => {
+        let email = req.query.email;
+        let sql = `select count(*) as cnt from user where email = '${email}';`;
+
+        console.log("email >>>>> " + email);
+
+        db.query(sql, function(err, rows, fields){
+            if(err){
+                console.log(err);
+                res.end();
+            }else{
+                console.log("email.cnt >>>>>> " + rows[0].cnt);
+                let result = rows[0].cnt;
+                res.send(`${result}`);
+            }
+        })
     })
 }
