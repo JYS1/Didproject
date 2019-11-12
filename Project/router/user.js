@@ -46,8 +46,8 @@ var myContract = new web3.eth.Contract([
 		"stateMutability": "view",
 		"type": "function"
 	}
-],'0x98e607c868847ac3f739492a31154d12508245d6',{
-    from: "0xc35fbed59c35ebdbaad7a6198096e98919ae7c98",
+],'0xc098e89814b55336d7a83048f91c779ec0576970',{
+    from: "0x3a6adf7aaa27093e89f4f0dc09fe881cea2d3c87",
     getPrice: '20000000'
 });
 
@@ -96,11 +96,11 @@ module.exports = function(app){
         // console.log(key);
         console.log("hash" + hash);
         const cipher = crypto.createCipher('aes-256-cbc', key);
-        let result = cipher.update(hash, 'utf8', 'base64'); // 'HbMtmFdroLU0arLpMflQ'
+        let result = cipher.update(hash, 'utf8', 'base64'); 
         result += cipher.final('base64');
         console.log(result);
 
-        myContract.methods.saveHash(id, result).send({from: "0xc35fbed59c35ebdbaad7a6198096e98919ae7c98"});
+        myContract.methods.saveHash(id, result).send({from: "0x3a6adf7aaa27093e89f4f0dc09fe881cea2d3c87"});
 
         res.send("블록체인 등록!");
     })
@@ -111,7 +111,7 @@ module.exports = function(app){
         let key = req.body.key;
 
        
-        let hash = await myContract.methods.sendHash(id).call({from: "0xc35fbed59c35ebdbaad7a6198096e98919ae7c98"});
+        let hash = await myContract.methods.sendHash(id).call({from: "0x3a6adf7aaa27093e89f4f0dc09fe881cea2d3c87"});
         console.log(hash);
         console.log(id);
         
