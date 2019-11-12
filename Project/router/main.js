@@ -18,8 +18,12 @@ module.exports = function(app)
         res.render('login.html');
     });
 
-    app.get('/validation', (req,res) => {
+    app.get('/validation', (req ,res) => {
         res.render('checkKey.html');
+    })
+    
+    app.get('/findIdPw', (req, res) => {
+        res.render('findIdPw.html');
     })
 
     app.post('/login', (req,res) => {
@@ -32,6 +36,7 @@ module.exports = function(app)
         db.query(sql,function(err, rows, fields) {
             if(err){
                 console.log(err);
+                res.send(err);
             }
             else if(rows[0].id == id && rows[0].password == password){
                 console.log("일치합니다");
