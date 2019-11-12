@@ -8,11 +8,8 @@
 
   <title>Individual HTML Parallax Template</title>
 <!--
-
 Template 2096 Individual
-
 http://www.tooplate.com/view/2096-individual
-
 -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">  <!-- Google web font "Open Sans" -->
   <link rel="stylesheet" href="../publc/fonts/font-awesome-4.5.0/css/font-awesome.min.css">                <!-- Font Awesome -->
@@ -44,8 +41,8 @@ http://www.tooplate.com/view/2096-individual
                   <br>
                   DImonD is your own DID like diamond</p>
 
-                  <a  href="/login" class="btn btn-danger">login</a>
-                  <a  href="/validation" class="btn btn-danger">validation</a>
+                  <a  href="/login" class="btn btn-danger1">login</a>
+                  <a  href="/validation" class="btn btn-danger2">validation</a>
               </div>
             </div>
 
@@ -60,7 +57,6 @@ http://www.tooplate.com/view/2096-individual
                 . Design: <a href="http://www.tooplate.com/view/2096-individual" target="_parent">Individual</a></p>
               </div>
             </div>
-
           </div> -->
 
 
@@ -76,15 +72,11 @@ http://www.tooplate.com/view/2096-individual
 
 
           <script>
-
             function setCarousel() {
-
               var slider = $('.tm-img-slider');
-
               if (slider.hasClass('slick-initialized')) {
                 slider.slick('destroy');
               }
-
               if($(window).width() > 991){
                   // Slick carousel
                   slider.slick({
@@ -103,22 +95,17 @@ http://www.tooplate.com/view/2096-individual
                 });
                }
              }
-
              $(document).ready(function(){
-
               setCarousel();
               $('.tm-img-slider').magnificPopup({
                 delegate: 'a', // child items selector, by clicking on it popup will open
                 type: 'image'
                 // other options
-
               });
-
               $(window).resize(function() {
                 setCarousel();
               });
             });
-
           </script>
         </body>
         </html>

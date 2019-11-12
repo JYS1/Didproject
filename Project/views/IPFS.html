@@ -23,6 +23,8 @@
   <link href="../public/css/IPFS.css" rel="stylesheet" media="all">
   <script src = "http://code.jquery.com/jquery-1.4.4.min.js"></script>
 </head>
+
+
 <script type="text/javascript">
   function upload() {
     const reader = new FileReader();
@@ -50,12 +52,15 @@
   }
   const trans_hash = () => {
         //예외처리
+        var link = document.location.href;
+        link = link.substr(27);
         $.ajax({
             type : 'POST',
             url : '/user/contract',
             data: {
                 "hash" : $('#hash').val(),
-                "private_key" : $('#private_key').val()
+                "private_key" : $('#private_key').val(),
+                "id" : link
             },
             success : function(result) {
                 alert(`${result}`);
@@ -65,9 +70,7 @@
                 alert('실패');
             }
         })
-
     }
-
 </script>
   <body>
       <div class="page-wrapper p-t-100 p-b-50">
@@ -83,13 +86,17 @@
                                   <a><b>1.사진을 등록해 주세요.</b></a>
                               <form action="/">
                               <div class="filebox bs3-primary">
+                              <div class="a">
         							<input class="upload-name" value="파일선택" disabled="disabled">
 
                                         <label class="btn--radius-1 btn--blue-2" for="photo">파일찾기</label>
               						  <input type="file" id="photo" class="upload-hidden">
                                       <div class="card-footer">
+                                      </div>
+                              </div>
+                              <div class="b">
                                         <button class="btn btn--radius btn--blue-2" type="button" onclick="upload()">Upload</button>
-                                    </div>
+                              </div>
                               </div>
 
                               </form>
