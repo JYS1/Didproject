@@ -13,7 +13,7 @@ var myContract = new web3.eth.Contract([
 		"constant": false,
 		"inputs": [
 			{
-				"name": "hash",
+				"name": "_id",
 				"type": "string"
 			},
 			{
@@ -31,7 +31,7 @@ var myContract = new web3.eth.Contract([
 		"constant": true,
 		"inputs": [
 			{
-				"name": "_hash",
+				"name": "_id",
 				"type": "string"
 			}
 		],
@@ -46,7 +46,7 @@ var myContract = new web3.eth.Contract([
 		"stateMutability": "view",
 		"type": "function"
 	}
-],'0xc098e89814b55336d7a83048f91c779ec0576970',{
+],'0xf17f86b023ddffd3cc7fd0837cff9ee1160de202',{
     from: "0x3a6adf7aaa27093e89f4f0dc09fe881cea2d3c87",
     getPrice: '20000000'
 });
