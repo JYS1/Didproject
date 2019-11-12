@@ -171,6 +171,41 @@ iframe {
     padding-left: 100px;
   }
 }
+
+
+
+.txt3 {
+  font-family: Poppins-Regular;
+  font-size: 13px;
+  line-height: 1.5;
+  padding-left: 247px;
+  color: #666666;
+}
+
+@media (max-width: 414px) { /*아이폰6,7,8*/
+  .txt3 {
+    padding-left: 180px;
+  }
+}
+
+@media (max-width: 375px) { /*아이폰X*/
+  .txt3 {
+    padding-left: 138px;
+  }
+}
+
+@media (max-width: 360px) { /*갤럭시*/
+  .txt3 {
+    padding-left: 128px;
+  }
+}
+
+@media (max-width: 320px) { /*아이폰se*/
+  .txt3 {
+    padding-left: 92px;
+  }
+}
+
 /*//////////////////////////////////////////////////////////////////
 [ login ]*/
 

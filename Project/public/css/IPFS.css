@@ -450,6 +450,37 @@ h6 {
   margin-right: 13%;
 }
 
+.btn--radius-2 {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-right: 11.5%;
+}
+
+@media (max-width: 767px) {
+  .a {
+    width:100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .b {
+    width:100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .btn--radius-2 {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 4px;
+    margin-right: 0px;
+    height: 36px;
+  }
+}
+
 @media (max-width: 767px) {
   .btn--radius {
     margin-top: 5px;
@@ -487,7 +518,7 @@ h6 {
 
 @media (max-width: 414px) { /*아이폰6,7,8*/
   .filebox.bs3-primary label{
-    margin-left: 68%;
+    margin-left: 61%;
     padding-top: 7px;
     height: 35px;
     width: 113px;
@@ -495,9 +526,28 @@ h6 {
   }
 }
 
+@media (max-width: 414px) {
+  .filebox .upload-name {
+    width: 93%;
+
+  }
+}
+
+@media (max-width: 414px) {
+  .btn--radius {
+    margin-right: 7%;
+  }
+}
+
+@media (max-width: 414px) {
+  .btn--radius-2 {
+    margin-right: 7%;
+  }
+}
+
 @media (max-width: 375px) { /*아이폰X*/
   .filebox.bs3-primary label{
-    margin-left: 64%;
+    margin-left: 57%;
     padding-top: 7px;
     height: 35px;
     border-top-width: 0px;
@@ -506,7 +556,7 @@ h6 {
 
 @media (max-width: 360px) { /*갤럭시*/
   .filebox.bs3-primary label{
-    margin-left: 62%;
+    margin-left: 55%;
     padding-top: 7px;
     height: 35px;
     border-top-width: 0px;
@@ -515,7 +565,7 @@ h6 {
 
 @media (max-width: 320px) { /*아이폰se*/
   .filebox.bs3-primary label {
-      margin-left: 56.5%;
+      margin-left: 49.5%;
       padding-top: 7px;
       height: 35px;
       border-top-width: 0px;
@@ -531,34 +581,9 @@ h6 {
   }
 }
 
-.btn--radius-2 {
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  margin-right: 8%;
-}
 
-@media (max-width: 767px) {
-  .a {
-    width:100%;
-  }
-}
 
-@media (max-width: 767px) {
-  .b {
-    width:100%;
-  }
-}
 
-@media (max-width: 767px) {
-  .btn--radius-2 {
-    padding-left: 15px;
-    padding-right: 15px;
-    margin-top: 4px;
-    margin-right: 0px;
-    height: 36px;
-  }
-}
 
 .btn--pill {
   -webkit-border-radius: 20px;
@@ -812,6 +837,12 @@ textarea {
   }
 }
 
+@media (max-width: 414px) {
+  .title {
+    margin-left: 32px;
+  }
+}
+
 @media (max-width: 375px) { /*아이폰se*/
   .title {
     margin-left: 17px;
@@ -862,6 +893,12 @@ textarea {
   border-color: rgba(255, 255, 255, 0);
   border-bottom-color: #fff;
   border-width: 10px;
+}
+
+@media (max-width: 414px) {
+  .card-6 .card-body {
+    left: 18px;
+  }
 }
 
 .card-6 .card-footer {
