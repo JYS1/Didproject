@@ -84,7 +84,7 @@ module.exports = function(app){
         });
 
         //res.send(`개인키: ${meta}`);
-        res.send(`성공`);
+        res.send(`성공`);ㄱ
     })
 
     app.post('/user/contract', async (req, res)=>{
@@ -138,12 +138,38 @@ module.exports = function(app){
         db.query(sql, function(err, rows, fields){
             if(err){
                 console.log(err);
-                res.end();
+                res.send(err);
             }else{
                 console.log("email.cnt >>>>>> " + rows[0].cnt);
                 let result = rows[0].cnt;
                 res.send(`${result}`);
             }
         })
+    })
+
+    app.get('/user/findIdPw', (req, res) => {
+        let email = req.query.email;
+        let sql = `select id , password from user where email = '${email}';`;
+
+        console.log("email >>>>>>" + email);
+
+        db.query(sql, function (err, rows, fields) {
+            console.log(rows);
+            console.log("1");
+            if (err) {
+                console.log(err);
+                res.send(err);
+            } else {
+                console.log('2');
+                let result;
+                if (rows.length > 0) {
+                    result = rows[0].id + "/" + rows[0].password;
+                } else {
+                    result = -1;
+                }
+                res.send(`${result}`);
+            }
+        })
+        console.log("3");
     })
 }

@@ -20,7 +20,11 @@ module.exports = function(app)
 
     app.get('/validation', (req,res) => {
         res.render('checkKey.html');
-    })
+    });
+
+    app.get('/findIdPw', (req, res) => {
+        res.render('findIdPw.html');
+    });
 
     app.post('/login', (req,res) => {
         let id = req.body.id;

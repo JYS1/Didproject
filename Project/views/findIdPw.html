@@ -22,27 +22,42 @@
 <!--===============================================================================================-->
 
 
-	<script>
+<script>
 	const findBtn = () => {
-		$.ajax({
-		   type : 'POST',
-		   url : '/findIdPw',
-		   data: {
-			   "email" : $('#email').val()
-		   },
-		   success : function(result) {
-                $('#result').attr("style", "text-align: center; color: green");
-               	$('#result').text("ID : " + result.id + "	|	" + result.password);
-		   },
-		   error : function(error) {
-                $('#result').attr("style", "text-align: center; color: red");
-                $('#result').text("Invalid email");
-                $('#email').focus();
-		   }
-	   })	//	End Ajax Request
+		if ($('#email').val().length > 0) {
+			$.ajax({
+				type: 'GET',
+				url: '/user/findIdPw',
+				data: {
+					"email": $('#email').val()
+				},
+				success: function (result) {
+					if (result == -1) {
+						$('#result').attr("style", "text-align: center; color: red");
+						$('#result').text("Invalid email, Please check it again");
+						$('#email').focus();
+					} else {
+						let id = result.split('/')[0];
+						let pw = result.split('/')[1];
+						$('#result').attr("style", "text-align: center; color: green");
+						$('#result').html("ID : " + id + "&nbsp&nbsp Password : " + pw);
+					}
+
+				},
+				error: function (error) {
+					$('#result').attr("style", "text-align: center; color: red");
+					$('#result').text("Invalid email");
+					$('#email').focus();
+				}
+			})	//	End Ajax Request
+		} else {
+			$('#result').attr("style", "text-align: center; color: red");
+			$('#result').text("Please type your email address first.");
+			$('#email').focus();
+		}
 	}
 
-	</script>
+</script>
 
 </head>
 
